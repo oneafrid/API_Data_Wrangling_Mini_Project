@@ -1,0 +1,34 @@
+# Importing Necessary Libraries
+import quandl
+import pandas as pd
+
+# Validating the API Key
+quandl.ApiConfig.api_key = '***********'
+
+# Fetching 2017's FSE/AFX_X stock data
+dataset = quandl.get('FSE/AFX_X', start_date='2017-01-01', end_date='2019-12-31')
+
+# Viewing first 5 rows
+dataset.head()
+
+# Printing the Highest & Lowest Opening Price
+print("Highest Opening Price : ", dataset['Open'].sort_values(ascending=False)[0])
+print("Lowest Opening Price : ", dataset['Open'].sort_values(ascending=True)[0])
+
+# Creating a Column of To Check the difference between Highest & Lowest Price
+dataset['Change In Price'] = dataset['High'] - dataset['Low']
+
+# Printing the difference between Highest & Lowest Price
+print("Highest Change In Price : ", dataset['Change In Price'].sort_values(ascending=False)[0])
+
+# Creating a Column of Difference Of The Consecutive days Closing Price
+dataset['Difference Of Consecutive days Closing Price'] = dataset['Close'].diff()
+
+# Printing Highest Difference Of The Consecutive days Closing Price
+print("Difference Of Consecutive days Closing Price : ", dataset['Difference Of Consecutive days Closing Price'].sort_values(ascending=False)[0])
+
+# Printing Average of Traded Volume
+print("Average of Traded Volume : ", dataset['Traded Volume'].mean())
+
+# Printing Median of Traded Volume
+print("Average of Traded Volume : ", dataset['Traded Volume'].median())
