@@ -9,4 +9,4 @@ Calculate what the highest and lowest opening prices were for the stock in this 
 What was the largest change in any one day (based on High and Low price)?
 What was the largest change between any two days (based on Closing Price)?
 What was the average daily trading volume during this year?
-(Optional) What was the median trading volume during this year. (Note: you may need to implement your own function for calculating the median.)
+What was the median trading volume during this year.
